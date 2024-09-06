@@ -1,14 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
-  const token = localStorage.getItem('token');
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    window.location.reload(); // Refresh page after logout to reflect changes
-  };
-
+const Navbar = ({ isAuthenticated, onLogout }) => {
   return (
     <nav
       style={{
@@ -32,7 +25,7 @@ const Navbar = () => {
         >
           Dashboard
         </Link>
-        {token && (
+        {isAuthenticated && (
           <Link
             to="/sessions"
             style={{
@@ -47,10 +40,9 @@ const Navbar = () => {
         )}
       </div>
       <div>
-        {token ? (
-          <Link
-            to="/"
-            onClick={handleLogout}
+        {isAuthenticated ? (
+          <button
+            onClick={onLogout}
             style={{
               color: '#fff',
               textDecoration: 'none',
@@ -58,10 +50,12 @@ const Navbar = () => {
               backgroundColor: '#ff0000',
               borderRadius: '4px',
               fontSize: '1rem',
+              border: 'none',
+              cursor: 'pointer',
             }}
           >
             Logout
-          </Link>
+          </button>
         ) : (
           <>
             <Link

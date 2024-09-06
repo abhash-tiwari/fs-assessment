@@ -3,10 +3,10 @@ import AuthForm from '../components/AuthForm';
 import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
-  const navigate = useNavigate(); // useNavigate instead of useHistory
+  const navigate = useNavigate();
   
   const handleRegister = () => {
-    navigate('/dashboard'); // navigate to dashboard
+    navigate('/dashboard');
   };
 
   return (

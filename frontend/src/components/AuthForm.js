@@ -8,11 +8,8 @@ const AuthForm = ({ onSubmit, isLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = isLogin
-        ? await API.post('/auth/login', { email, password })
-        : await API.post('/auth/register', { email, password });
+      const response = await API.post('/auth/login', { email, password });
       localStorage.setItem('token', response.data.token);
-      onSubmit();
     } catch (error) {
       console.error('Authentication failed', error);
     }
@@ -87,3 +84,5 @@ const AuthForm = ({ onSubmit, isLogin }) => {
 };
 
 export default AuthForm;
+
+

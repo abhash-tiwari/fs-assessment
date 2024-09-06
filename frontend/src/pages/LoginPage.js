@@ -3,16 +3,16 @@ import AuthForm from '../components/AuthForm';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  const navigate = useNavigate(); // useNavigate instead of useHistory
+  const navigate = useNavigate();
   
   const handleLogin = () => {
-    navigate('/dashboard'); // navigate to dashboard
+    navigate('/dashboard');
   };
 
   return (
     <div>
       <h2>Login</h2>
-      <AuthForm onSubmit={handleLogin} isLogin />
+      <AuthForm onSubmit={handleLogin} isLogin   />
     </div>
   );
 };
